@@ -1,81 +1,365 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>David & Ulan Wedding</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>David & Ulan Wedding</title>
 
-<style>
-body {
-  margin:0;
-  font-family: 'Segoe UI', sans-serif;
-  text-align:center;
-  background:#f7f7f7;
-}
-.container {
-  padding:40px 20px;
-}
-h1 { font-size:32px; }
-h2 { margin-top:30px; }
-.card {
-  background:white;
-  padding:20px;
-  margin:20px auto;
-  border-radius:15px;
-  max-width:400px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-.button {
-  display:inline-block;
-  padding:12px 20px;
-  margin-top:15px;
-  background:black;
-  color:white;
-  text-decoration:none;
-  border-radius:8px;
-}
-</style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      background:#f5f2e9;
+      color:#2d3827;
+      overflow-x:hidden;
+    }
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(28,36,22,.35),rgba(28,36,22,.65)),
+      url('photo1.jpg') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:white;
+      padding:30px;
+      position:relative;
+    }
+
+    .hero::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      backdrop-filter:blur(1px);
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      animation:fadeUp 1.2s ease;
+      max-width:500px;
+    }
+
+    .small{
+      letter-spacing:5px;
+      font-size:12px;
+      opacity:.9;
+      margin-bottom:15px;
+    }
+
+    h1{
+      font-family:'Cormorant Garamond',serif;
+      font-size:62px;
+      line-height:1;
+      margin-bottom:12px;
+    }
+
+    .date{
+      font-size:18px;
+      opacity:.95;
+      margin-bottom:28px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 28px;
+      border-radius:999px;
+      text-decoration:none;
+      background:#70825e;
+      color:white;
+      font-weight:600;
+      box-shadow:0 10px 30px rgba(0,0,0,.18);
+    }
+
+    .wrap{
+      width:min(92%,680px);
+      margin:auto;
+    }
+
+    section{
+      padding:70px 0;
+    }
+
+    .title{
+      text-align:center;
+      font-family:'Cormorant Garamond',serif;
+      font-size:42px;
+      margin-bottom:25px;
+      color:#32412b;
+    }
+
+    .card{
+      background:rgba(255,255,255,.7);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,.5);
+      padding:24px;
+      border-radius:28px;
+      box-shadow:0 15px 35px rgba(0,0,0,.08);
+      margin-top:18px;
+    }
+
+    .countdown{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:15px;
+      margin-top:25px;
+    }
+
+    .box{
+      background:#70825e;
+      color:white;
+      border-radius:24px;
+      padding:22px 10px;
+      text-align:center;
+    }
+
+    .box h2{
+      font-size:34px;
+      margin-bottom:4px;
+    }
+
+    .gallery{
+      display:grid;
+      gap:18px;
+    }
+
+    .gallery img{
+      width:100%;
+      border-radius:28px;
+      display:block;
+      box-shadow:0 18px 40px rgba(0,0,0,.12);
+    }
+
+    .bank{
+      background:linear-gradient(135deg,#5f7350,#34442b);
+      color:white;
+      text-align:center;
+      border-radius:28px;
+      padding:28px;
+    }
+
+    .rekening{
+      font-size:28px;
+      margin:12px 0;
+      font-weight:700;
+      letter-spacing:1px;
+    }
+
+    .copy{
+      border:none;
+      margin-top:15px;
+      padding:12px 22px;
+      border-radius:999px;
+      background:white;
+      color:#2f3d28;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .gift-note{
+      margin-top:12px;
+      font-size:14px;
+      opacity:.9;
+    }
+
+    .comment-form input,
+    .comment-form textarea{
+      width:100%;
+      border:none;
+      outline:none;
+      padding:16px;
+      margin-bottom:12px;
+      border-radius:18px;
+      font-size:15px;
+      background:white;
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);
+    }
+
+    .comment-form textarea{
+      resize:none;
+      min-height:110px;
+    }
+
+    .comment-form button{
+      width:100%;
+      border:none;
+      padding:15px;
+      border-radius:18px;
+      background:#70825e;
+      color:white;
+      font-weight:700;
+      font-size:15px;
+      cursor:pointer;
+    }
+
+    .comment{
+      background:white;
+      border-radius:20px;
+      padding:18px;
+      margin-top:14px;
+      box-shadow:0 10px 25px rgba(0,0,0,.05);
+    }
+
+    .comment b{
+      display:block;
+      margin-bottom:6px;
+      color:#2d3827;
+    }
+
+    iframe{
+      width:100%;
+      height:300px;
+      border:0;
+      border-radius:28px;
+      box-shadow:0 15px 35px rgba(0,0,0,.08);
+    }
+
+    .footer{
+      text-align:center;
+      padding:40px 20px 60px;
+      font-size:14px;
+      opacity:.75;
+    }
+
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(30px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="container">
-  <h1>David & Ulan</h1>
-  <p>Senin, 15 Juni 2026</p>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="small">THE WEDDING OF</div>
+      <h1>David<br>& Ulan</h1>
+      <div class="date">Senin, 15 Juni 2026</div>
+      <a href="#open" class="btn">Buka Undangan</a>
+    </div>
+  </section>
 
-  <div class="card">
-    <h2>Akad & Resepsi</h2>
-    <p>Senin, 15 Juni 2026</p>
-    <p>Jam 08:00 WIB - Selesai</p>
+  <section id="open">
+    <div class="wrap">
+      <h2 class="title">Menuju Hari Bahagia</h2>
+
+      <div class="countdown">
+        <div class="box"><h2 id="days">0</h2><p>Hari</p></div>
+        <div class="box"><h2 id="hours">0</h2><p>Jam</p></div>
+        <div class="box"><h2 id="minutes">0</h2><p>Menit</p></div>
+        <div class="box"><h2 id="seconds">0</h2><p>Detik</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="title">Our Moment</h2>
+      <div class="gallery">
+        <img src="photo1.jpg" alt="">
+        <img src="photo2.jpg" alt="">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="title">Wedding Event</h2>
+      <div class="card">
+        <p><b>📅 Senin, 15 Juni 2026</b></p><br>
+        <p>🕗 08:00 WIB - Selesai</p><br>
+        <p>
+          📍 Villa 89/99, Jl. Padat karya no 3 Kp.Batukasur RT 05/03,<br>
+          Desa Batulayang, Cisarua - Bogor
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="title">Lokasi</h2>
+      <iframe src="https://maps.google.com/maps?q=Cisarua%20Bogor&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="title">Amplop Digital</h2>
+      <div class="bank">
+        <h3>UOB</h3>
+        <div class="rekening" id="rek">7453246551</div>
+        <p>a/n Suhendi</p>
+        <button class="copy" onclick="copyRek()">Copy Nomor Rekening</button>
+        <div class="gift-note">Terima kasih atas doa & tanda kasih Anda 🤍</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="title">Ucapan & Doa</h2>
+
+      <div class="card comment-form">
+        <input id="name" placeholder="Nama">
+        <textarea id="message" placeholder="Tulis ucapan & doa..."></textarea>
+        <button onclick="sendComment()">Kirim Ucapan</button>
+      </div>
+
+      <div id="comments"></div>
+    </div>
+  </section>
+
+  <div class="footer">
+    Merupakan suatu kehormatan & kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.
   </div>
 
-  <div class="card">
-    <h2>Lokasi</h2>
-    <p>Villa 89/99<br>
-    Jl. Padat Karya No 3<br>
-    Kp. Batukasur RT 05/03<br>
-    Desa Batulayang, Cisarua - Bogor</p>
+<script>
+function copyRek(){
+  navigator.clipboard.writeText("7453246551");
+  alert("Nomor rekening berhasil disalin");
+}
 
-    <a class="button" href="https://maps.google.com/?q=Villa+89+99+Cisarua+Bogor" target="_blank">
-      Buka Maps
-    </a>
-  </div>
+const target = new Date("June 15, 2026 08:00:00").getTime();
 
-  <div class="card">
-    <h2>Keluarga</h2>
-    <p>Putra dari<br><b>Bpk Amin & Ibu Minah</b></p>
-    <p>Putri dari<br><b>Bpk Risman & Ibu Jizah</b></p>
-  </div>
+setInterval(()=>{
+  const now = new Date().getTime();
+  const gap = target - now;
 
-  <div class="card">
-    <h2>Konfirmasi Kehadiran</h2>
-    <a class="button" href="https://wa.me/628xxxxxxxxxx">
-      RSVP via WhatsApp
-    </a>
-  </div>
+  const d = Math.floor(gap/(1000*60*60*24));
+  const h = Math.floor((gap%(1000*60*60*24))/(1000*60*60));
+  const m = Math.floor((gap%(1000*60*60))/(1000*60));
+  const s = Math.floor((gap%(1000*60))/1000);
 
-  <p>Terima kasih atas doa & kehadirannya</p>
-</div>
+  document.getElementById('days').innerHTML = d;
+  document.getElementById('hours').innerHTML = h;
+  document.getElementById('minutes').innerHTML = m;
+  document.getElementById('seconds').innerHTML = s;
+},1000);
+
+function sendComment(){
+  const name = document.getElementById('name').value;
+  const message = document.getElementById('message').value;
+
+  if(!name || !message){
+    alert('Isi nama dan pesan dulu');
+    return;
+  }
+
+  const box = document.createElement('div');
+  box.className = 'comment';
+  box.innerHTML = '<b>'+name+'</b><span>'+message+'</span>';
+
+  document.getElementById('comments').prepend(box);
+
+  document.getElementById('name').value='';
+  document.getElementById('message').value='';
+}
+</script>
 
 </body>
 </html>
